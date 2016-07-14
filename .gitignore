@@ -32,8 +32,8 @@
 /web/bundles/
 /web/assetic/
 /web/uploads/
-/css/compiled/
-/js/compiled/
+/web/css/compiled/
+/web/js/compiled/
 
 # Assets managed by Bower
 /web/assets/vendor/
