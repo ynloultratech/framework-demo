@@ -1,0 +1,23 @@
+{% extends 'example.html.twig' %}
+
+{% block example %}
+    <h3 class="page-header">Pjax Links</h3>
+    <div style="padding: 20px 10px">
+        <p>
+            <a class="btn btn-default" href="{{ path('pjax_page2') }}">Go to Page2</a>
+        </p>
+        <p class="alert alert-danger">
+            To ignore Pjax to specific link can use the following attribute <code>data-pjax="false"</code>.
+        </p>
+        <p>
+            <a class="btn btn-danger" data-pjax="false" href="{{ path('pjax_page2') }}">Go to Page2 (Without Pjax)</a>
+        </p>
+    </div>
+    <h3 class="page-header">Pjax Forms</h3>
+    <div style="padding: 20px 10px">
+        {% if name %}
+            <div class="alert alert-success">Hello, {{ name }}</div>
+        {% endif %}
+        {{ form(form) }}
+    </div>
+{% endblock %}

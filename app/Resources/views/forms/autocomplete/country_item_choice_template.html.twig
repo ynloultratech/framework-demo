@@ -1,0 +1,12 @@
+{# @var object \AppBundle\Entity\Country #}
+<h4>
+    {{ object.name }} <small class="text-muted">({{ object.iso }})</small>
+</h4>
+<div class="label label-info" >
+    Phone Code: {{ object.phoneCode }}
+</div>
+<div class="label label-warning" style="margin-left: 10px" >
+    ISO3: {{ object.iso3 }}
+</div>
+<span class="flag flag-{{ object.iso|lower }}"></span>
+

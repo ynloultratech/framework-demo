@@ -1,0 +1,15 @@
+{% extends 'example.html.twig' %}
+
+{% block title %}Modals{% endblock %}
+
+{% block example %}
+    <a class="btn btn-default" href="{{ path('modals_remote_content') }}" data-target="modal">
+        Remote Content
+    </a>
+    <a class="btn btn-default" href="{{ path('modals_remote_form') }}" data-target="modal">
+        Remote Form
+    </a>
+    <a class="btn btn-default" href="{{ path('modals_remote_form',{'customized':true}) }}" data-target="modal">
+        Remote Form (Customized)
+    </a>
+{% endblock %}

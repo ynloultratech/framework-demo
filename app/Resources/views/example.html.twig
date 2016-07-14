@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block headline %}
+    <i class="fa fa-{{ icon }} fa-lg"></i> {{ title }}
+{% endblock %}
+
+{% block title %}
+   {{ title }}
+{% endblock %}
+
+{% block content %}
+    {% block form %}
+        <div class="bs-example bs-example-type">
+            {% block example %}
+                {{ form(form) }}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

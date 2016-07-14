@@ -1,0 +1,14 @@
+{% extends 'example.html.twig' %}
+
+{% block headline %}
+    <i class="fa {{ icon }}">{{ title }} <small>Page2</small>
+{% endblock %}
+
+{% block example %}
+<h3 class="page-header">Pjax Links</h3>
+<div style="padding: 20px 10px">
+    <p>
+        <a class="btn btn-default" href="{{ path('pjax') }}">Go Back to Page1</a>
+    </p>
+</div>
+{% endblock %}

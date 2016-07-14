@@ -1,3 +1,4 @@
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -29,7 +30,10 @@
 
 # Assets and user uploads
 /web/bundles/
+/web/assetic/
 /web/uploads/
+/css/compiled/
+/js/compiled/
 
 # Assets managed by Bower
 /web/assets/vendor/
@@ -46,3 +50,6 @@
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
+.idea/
+.project/
+var/
