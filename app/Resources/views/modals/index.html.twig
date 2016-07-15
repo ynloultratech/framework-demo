@@ -3,13 +3,13 @@
 {% block title %}Modals{% endblock %}
 
 {% block example %}
-    <a class="btn btn-default" href="{{ path('modals_remote_content') }}" data-target="modal">
+    <a class="btn btn-default" href="{{ path('modals_remote_content') }}">
         Remote Content
     </a>
-    <a class="btn btn-default" href="{{ path('modals_remote_form') }}" data-target="modal">
+    <a class="btn btn-default" href="{{ path('modals_remote_form') }}">
         Remote Form
     </a>
-    <a class="btn btn-default" href="{{ path('modals_remote_form',{'customized':true}) }}" data-target="modal">
+    <a class="btn btn-default" href="{{ path('modals_remote_form',{'customized':true}) }}">
         Remote Form (Customized)
     </a>
 {% endblock %}

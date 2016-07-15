@@ -3,9 +3,10 @@
 namespace AppBundle\Controller\Form;
 
 use AppBundle\Controller\DefaultController;
+use AppBundle\Entity\Continent;
 use AppBundle\Entity\Country;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,11 +25,29 @@ class AutocompleteExtensionController extends DefaultController
         $form = $this->get('form.factory')->create();
 
         $form->add(
-            'autocomplete', EntityType::class,
+            'continent', EntityType::class,
             [
-                'autocomplete' => ['name', 'iso', 'iso3', 'phoneCode'],
+                'autocomplete' => ['name'],
                 'label' => 'AutoComplete (Select2)',
+                'class' => Continent::class
+            ]
+        );
+        $form->add(
+            'autocomplete_chained', EntityType::class,
+            [
+                'autocomplete' => ['name', 'iso', 'phoneCode'],
+                'autocomplete_related_fields' => ['continent'],
+                'label' => 'AutoComplete (chained)',
                 'class' => Country::class,
+                'query_builder' => function () {
+                    /** @var EntityManager $em */
+                    $em = $this->get('doctrine')->getManager();
+
+                    return $em->createQueryBuilder()
+                        ->select('c')
+                        ->from(Country::class, 'c')
+                        ->where('c.continent = :continent');
+                },
                 'select2_template_result' => 'forms\autocomplete\country_item_choice_template.html.twig',
                 'select2_template_selection' => 'forms\autocomplete\country_item_selection_template.html.twig'
             ]
@@ -38,7 +57,7 @@ class AutocompleteExtensionController extends DefaultController
             'autocomplete_multiple', EntityType::class,
             [
                 'multiple' => true,
-                'autocomplete' => ['name', 'iso', 'iso3', 'phoneCode'],
+                'autocomplete' => ['name', 'iso', 'phoneCode'],
                 'label' => 'AutoComplete (Select2-multiple)',
                 'class' => Country::class,
                 'select2_template_result' => 'forms\autocomplete\country_item_choice_template.html.twig',

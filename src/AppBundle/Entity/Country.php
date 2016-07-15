@@ -42,18 +42,26 @@ class Country
     protected $name;
 
     /**
-     * @var string
+     * @var Continent
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Continent")
      */
-    protected $iso3;
+    protected $continent;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    protected $numCode;
+    protected $currency;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $currencyCode;
+
 
     /**
      * @var string
@@ -110,45 +118,6 @@ class Country
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getIso3()
-    {
-        return $this->iso3;
-    }
-
-    /**
-     * @param string $iso3
-     *
-     * @return $this
-     */
-    public function setIso3($iso3)
-    {
-        $this->iso3 = $iso3;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNumCode()
-    {
-        return $this->numCode;
-    }
-
-    /**
-     * @param string $numCode
-     *
-     * @return $this
-     */
-    public function setNumCode($numCode)
-    {
-        $this->numCode = $numCode;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -166,6 +135,66 @@ class Country
     public function setPhoneCode($phoneCode)
     {
         $this->phoneCode = $phoneCode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContinent()
+    {
+        return $this->continent;
+    }
+
+    /**
+     * @param string $continent
+     *
+     * @return $this
+     */
+    public function setContinent($continent)
+    {
+        $this->continent = $continent;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     *
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currencyCode;
+    }
+
+    /**
+     * @param string $currencyCode
+     *
+     * @return $this
+     */
+    public function setCurrencyCode($currencyCode)
+    {
+        $this->currencyCode = $currencyCode;
 
         return $this;
     }
