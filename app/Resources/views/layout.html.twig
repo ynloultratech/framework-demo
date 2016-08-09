@@ -1,14 +1,14 @@
 {% extends 'MopaBootstrapBundle::base.html.twig' %}
 
 {% block head_style %}
-    {% stylesheets '@ynlo_framework_all_css' 'css/docs.css' 'css/flags.css' filter='cssrewrite' output='css/compiled/demo.css' %}
+    {% stylesheets '@app_css' 'css/docs.css' 'css/flags.css' filter='cssrewrite' output='css/compiled/demo.css' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 
 {% block head_script %}
 
-    {% javascripts '@ynlo_framework_all_js' output='js/compiled/demo.js' %}
+    {% javascripts '@app_js' output='js/compiled/demo.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {#<script src="{{ asset('js/jquery.min.js') }}"></script>#}
@@ -46,4 +46,15 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+{% endblock %}
+
+{% block foot_script %}
+    <script type="text/javascript">
+        require(['bootstrap'], function () {
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="popover"]').popover();
+            });
+        });
+    </script>
 {% endblock %}

@@ -10,6 +10,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -31,6 +32,7 @@ class Country
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $iso;
 
@@ -38,13 +40,15 @@ class Country
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $name;
 
     /**
      * @var Continent
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Continent")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Continent", inversedBy="countries")
+     * @Assert\NotBlank()
      */
     protected $continent;
 
@@ -52,6 +56,7 @@ class Country
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     protected $currency;
 
@@ -59,6 +64,7 @@ class Country
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     protected $currencyCode;
 
@@ -67,6 +73,7 @@ class Country
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
      */
     protected $phoneCode;
 

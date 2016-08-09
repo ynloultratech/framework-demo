@@ -19,7 +19,7 @@
   },
   "require": {
     "php": ">=5.4",
-    "symfony/symfony": "3.0.*",
+    "symfony/symfony": "^3.0",
     "ynloultratech/framework": "dev-master",
     "doctrine/orm": "^2.5",
     "doctrine/doctrine-bundle": "^1.6",
@@ -29,7 +29,9 @@
     "sensio/framework-extra-bundle": "^3.0.2",
     "incenteev/composer-parameter-handler": "^2.0",
     "mopa/bootstrap-bundle" : "^3.0",
-    "knplabs/knp-menu-bundle" : "^2.1"
+    "knplabs/knp-menu-bundle" : "^2.1",
+    "friendsofsymfony/user-bundle": "2.0.*@dev",
+    "symfony/swiftmailer-bundle": "^2.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.1|^5.1",

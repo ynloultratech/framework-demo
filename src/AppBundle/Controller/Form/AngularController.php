@@ -37,7 +37,7 @@ class AngularController extends DefaultController
                     'H4' => 'h4',
                     'H5' => 'h5',
                     'H6' => 'h6',
-                ]
+                ],
             ]
         );
         $form->add('color', ColorPickerType::class, ['data' => '#000000']);
@@ -46,12 +46,12 @@ class AngularController extends DefaultController
             'controller', AngularControllerType::class, [
                 'controller_body' => 'forms\angular_controller\controller_body.js.twig',
                 'angular_services' => ['$scope', '$log'],
-                'angular_modules' => ['ngAnimate']
+                'angular_modules' => ['ngAnimate'],
             ]
         );
         $form->add(
             'sample', EmbeddedTemplateType::class, [
-                'template' => 'forms\angular_controller\sample_text.html.twig'
+                'template' => 'forms\angular_controller\sample_text.html.twig',
             ]
         );
 

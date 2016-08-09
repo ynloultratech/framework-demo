@@ -69,12 +69,21 @@ mopa_bootstrap:
 
 ynlo_framework:
     debug: "%kernel.debug%"
+
+ynlo_assets:
+    contexts:
+      app:
+        override:
+           bootstrap_css: css/bootstrap.themed.min.css
+
     assets:
        bootstrap_css: css/bootstrap.themed.min.css
 
-ynlo_form:
-    datetimepicker: true
-    select2: true
+#ynlo_admin:
+#    mode: fixed
+
+
+
 
 
 

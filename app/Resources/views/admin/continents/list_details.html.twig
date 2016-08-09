@@ -1,0 +1,23 @@
+{# @var object \AppBundle\Entity\Continent #}
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+            <th>Flag</th>
+            <th>Name</th>
+            <th>ISO</th>
+            <th>Currency</th>
+            <th>Phone Area Prefix</th>
+            </thead>
+            {% for country in object.countries %}
+                <tr>
+                    <td><span class="flag flag-{{ country.iso|lower }}"></span></td>
+                    <td>{{ country.name }}</td>
+                    <td>{{ country.iso }}</td>
+                    <td>{{ country.currency }} ({{ country.currencyCode }})</td>
+                    <td>{{ country.phoneCode }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>

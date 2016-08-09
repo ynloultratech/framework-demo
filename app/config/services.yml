@@ -4,6 +4,24 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.continent_admin:
+        class: AppBundle\Admin\ContinentAdmin
+        arguments:
+            - ~
+            - AppBundle\Entity\Continent
+            - ~
+        tags:
+            - { name: 'sonata.admin', manager_type: orm, label: Continents, group: Locations }
+        calls:
+            - ['addChild', ['@app.country_admin']]
+
+
+    app.country_admin:
+        class: AppBundle\Admin\CountryAdmin
+        arguments:
+            - ~
+            - AppBundle\Entity\Country
+            - ~
+        tags:
+            - { name: 'sonata.admin', manager_type: orm, label: Countries, group: Locations  }
+

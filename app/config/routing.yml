@@ -2,6 +2,10 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-_ynlo_framework:
-    resource: '@YnloFrameworkBundle/Resources/config/routing.yml'
+_ynlo_form:
+    resource: '@YnloFormBundle/Resources/config/routing.yml'
+
+_ynlo_admin:
+    resource: '@YnloAdminBundle/Resources/config/routing.yml'
+    prefix:   /admin
 

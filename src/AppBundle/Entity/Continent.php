@@ -9,6 +9,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +36,13 @@ class Continent
     protected $name;
 
     /**
+     * @var ArrayCollection|Country[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Country", mappedBy="continent", cascade={"all"})
+     */
+    protected $countries;
+
+    /**
      * @return int
      */
     public function getId()
@@ -58,6 +66,41 @@ class Continent
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Country[]
+     */
+    public function getCountries()
+    {
+        return $this->countries;
+    }
+
+    /**
+     * @param ArrayCollection|Country[] $countries
+     *
+     * @return $this
+     */
+    public function setCountries($countries)
+    {
+        $this->countries = $countries;
+
+        return $this;
+    }
+
+    /**
+     * addCountry
+     *
+     * @param Country $country
+     *
+     * @return $this
+     */
+    public function addCountry(Country $country)
+    {
+        $country->setContinent($this);
+        $this->countries->add($country);
 
         return $this;
     }
