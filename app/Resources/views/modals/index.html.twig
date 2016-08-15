@@ -3,10 +3,10 @@
 {% block title %}Modals{% endblock %}
 
 {% block example %}
-    <a class="btn btn-default" href="{{ path('modals_remote_content') }}">
+    <a data-target="modal" class="btn btn-default" href="{{ path('modals_remote_content') }}">
         Remote Content
     </a>
-    <a class="btn btn-default" href="{{ path('modals_remote_form') }}">
+    <a class="btn btn-default" href="{{ path('modals_remote_form', {'data-target':'modal'}) }}">
         Remote Form
     </a>
     <a class="btn btn-default" href="{{ path('modals_remote_form',{'customized':true}) }}">
