@@ -82,7 +82,7 @@ class CountryAdmin extends AbstractAdmin
             'continent',
             null,
             [
-                // 'autocomplete' => 'name',//TODO: fix autocomplete default value
+                'autocomplete' => 'name',
             ]
         );
     }
