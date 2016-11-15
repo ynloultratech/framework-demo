@@ -50,11 +50,16 @@
 
 {% block foot_script %}
     <script type="text/javascript">
-        require(['bootstrap'], function () {
+        var bootstrapLoad = function () {
             $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
                 $('[data-toggle="popover"]').popover();
             });
-        });
+        };
+        if (typeof requirejs !== 'undefined') {
+            require(['bootstrap'], bootstrapLoad);
+        } else {
+            bootstrapLoad();
+        }
     </script>
 {% endblock %}

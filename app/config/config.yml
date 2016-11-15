@@ -71,6 +71,7 @@ ynlo_framework:
     debug: "%kernel.debug%"
 
 ynlo_assets:
+    requirejs: true
     contexts:
       app:
         override:
