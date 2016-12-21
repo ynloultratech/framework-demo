@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Form;
 use AppBundle\Controller\DefaultController;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use YnloFramework\YnloFormBundle\Form\Type\ColorPickerType;
 
@@ -23,7 +24,7 @@ class ExtensionToggleController extends DefaultController
         $form->add(
             'enabled', CheckboxType::class,
             [
-                'toggle' => 'is_enabled'
+                'toggle' => 'is_enabled',
             ]
         );
 
@@ -34,17 +35,17 @@ class ExtensionToggleController extends DefaultController
                     [
                         '' => '',
                         'Mobile' => 'mobile',
-                        'Pc' => 'pc'
+                        'Pc' => 'pc',
                     ],
                 'toggle_prefix' => 'device-',
-                'toggle_group' => 'is_enabled'
+                'toggle_group' => 'is_enabled',
             ]
         );
 
         $form->add(
             'mobile_color', ColorPickerType::class,
             [
-                'toggle_group' => ['is_enabled', 'device-mobile']
+                'toggle_group' => ['is_enabled', 'device-mobile'],
             ]
         );
 
@@ -58,16 +59,47 @@ class ExtensionToggleController extends DefaultController
                     ],
                 //'expanded' => true,//TODO: support for expanded choices (radios)
                 'toggle_prefix' => 'pc-type-',
-                'toggle_group' => ['is_enabled', 'device-pc']
+                'toggle_group' => ['is_enabled', 'device-pc'],
             ]
         );
 
         $form->add(
             'touch_screen', CheckboxType::class,
             [
-                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop']
+                'toggle' => 'touch',
+                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop'],
             ]
         );
+
+        $form->add(
+            'screen_details', TextType::class,
+            [
+                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop', 'not_touch'],
+            ]
+        );
+
+        $form->add(
+            'Brand', ChoiceType::class,
+            [
+                'choices' =>
+                    [
+                        '' => '',
+                        'Samsung' => 'samsung',
+                        'HP' => 'HP',
+                        'Toshiba' => 'Toshiba',
+                    ],
+                'toggle_prefix' => 'brand-',
+                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop'],
+            ]
+        );
+
+        $form->add(
+            'refurbished', CheckboxType::class,
+            [
+                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop', 'not_brand-samsung'],
+            ]
+        );
+
 
         return $this->renderExample(['form' => $form->createView()]);
     }
