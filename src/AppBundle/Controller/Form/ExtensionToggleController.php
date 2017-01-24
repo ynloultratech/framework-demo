@@ -87,6 +87,7 @@ class ExtensionToggleController extends DefaultController
                         'Samsung' => 'samsung',
                         'HP' => 'HP',
                         'Toshiba' => 'Toshiba',
+                        'Sony' => 'Sony',
                     ],
                 'toggle_prefix' => 'brand-',
                 'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop'],
@@ -96,7 +97,7 @@ class ExtensionToggleController extends DefaultController
         $form->add(
             'refurbished', CheckboxType::class,
             [
-                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop', 'not_brand-samsung'],
+                'toggle_group' => ['is_enabled', 'device-pc', 'pc-type-laptop', 'not_brand-sony', 'not_brand-hp'],
             ]
         );
 
